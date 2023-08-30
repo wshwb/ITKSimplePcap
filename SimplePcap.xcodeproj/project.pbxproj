@@ -1,0 +1,526 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A35BCBC248F258D00FF13BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35BCBB248F258D00FF13BD /* AppDelegate.swift */; };
+		8A35BCBE248F258F00FF13BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A35BCBD248F258F00FF13BD /* Assets.xcassets */; };
+		8A35BCC1248F258F00FF13BD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35BCBF248F258F00FF13BD /* MainMenu.xib */; };
+		8A490D0524B42C4200D2744C /* IPCConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A490D0324B42C4200D2744C /* IPCConnection.m */; };
+		8A8152ED248F2CBD00F06C75 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8152EC248F2CBD00F06C75 /* NetworkExtension.framework */; };
+		8A8152F1248F2CBD00F06C75 /* FilterPacketProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8152F0248F2CBD00F06C75 /* FilterPacketProvider.m */; };
+		8A8152F3248F2CBD00F06C75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8152F2248F2CBD00F06C75 /* main.m */; };
+		8A8152F8248F2CBD00F06C75 /* Demo.itkSimplePcap.SimplePcapExtension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = 8A8152EA248F2CBD00F06C75 /* Demo.itkSimplePcap.SimplePcapExtension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8AF0F29524B4463C00FAB655 /* IPCConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A490D0324B42C4200D2744C /* IPCConnection.m */; };
+		8AF2F181248F3F3600308B9F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2F17F248F3F3600308B9F /* MainWindowController.swift */; };
+		8AF2F182248F3F3600308B9F /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF2F180248F3F3600308B9F /* MainWindowController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8A8152F6248F2CBD00F06C75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A35BCB0248F258D00FF13BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A8152E9248F2CBD00F06C75;
+			remoteInfo = SimplePcapExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8A8152F9248F2CBD00F06C75 /* Embed System Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(SYSTEM_EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				8A8152F8248F2CBD00F06C75 /* Demo.itkSimplePcap.SimplePcapExtension.systemextension in Embed System Extensions */,
+			);
+			name = "Embed System Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8A35BCB8248F258D00FF13BD /* SimplePcap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplePcap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A35BCBB248F258D00FF13BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8A35BCBD248F258F00FF13BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A35BCC0248F258F00FF13BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8A35BCC2248F258F00FF13BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A35BCC3248F258F00FF13BD /* SimplePcap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplePcap.entitlements; sourceTree = "<group>"; };
+		8A490D0324B42C4200D2744C /* IPCConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPCConnection.m; sourceTree = "<group>"; };
+		8A490D0424B42C4200D2744C /* IPCConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPCConnection.h; sourceTree = "<group>"; };
+		8A8152EA248F2CBD00F06C75 /* Demo.itkSimplePcap.SimplePcapExtension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = Demo.itkSimplePcap.SimplePcapExtension.systemextension; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A8152EC248F2CBD00F06C75 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		8A8152EF248F2CBD00F06C75 /* FilterPacketProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterPacketProvider.h; sourceTree = "<group>"; };
+		8A8152F0248F2CBD00F06C75 /* FilterPacketProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterPacketProvider.m; sourceTree = "<group>"; };
+		8A8152F2248F2CBD00F06C75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8A8152F4248F2CBD00F06C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A8152F5248F2CBD00F06C75 /* SimplePcapExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplePcapExtension.entitlements; sourceTree = "<group>"; };
+		8AF0F29224B43D5C00FAB655 /* SimplePcap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimplePcap-Bridging-Header.h"; sourceTree = "<group>"; };
+		8AF2F17F248F3F3600308B9F /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		8AF2F180248F3F3600308B9F /* MainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A35BCB5248F258D00FF13BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A8152E7248F2CBD00F06C75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A8152ED248F2CBD00F06C75 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8A35BCAF248F258D00FF13BD = {
+			isa = PBXGroup;
+			children = (
+				8A35BCBA248F258D00FF13BD /* SimplePcap */,
+				8A8152EE248F2CBD00F06C75 /* SimplePcapExtension */,
+				8A8152EB248F2CBD00F06C75 /* Frameworks */,
+				8A35BCB9248F258D00FF13BD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8A35BCB9248F258D00FF13BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A35BCB8248F258D00FF13BD /* SimplePcap.app */,
+				8A8152EA248F2CBD00F06C75 /* Demo.itkSimplePcap.SimplePcapExtension.systemextension */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A35BCBA248F258D00FF13BD /* SimplePcap */ = {
+			isa = PBXGroup;
+			children = (
+				8A35BCBB248F258D00FF13BD /* AppDelegate.swift */,
+				8A35BCBD248F258F00FF13BD /* Assets.xcassets */,
+				8A35BCBF248F258F00FF13BD /* MainMenu.xib */,
+				8A35BCC2248F258F00FF13BD /* Info.plist */,
+				8A35BCC3248F258F00FF13BD /* SimplePcap.entitlements */,
+				8AF2F17F248F3F3600308B9F /* MainWindowController.swift */,
+				8AF2F180248F3F3600308B9F /* MainWindowController.xib */,
+				8AF0F29224B43D5C00FAB655 /* SimplePcap-Bridging-Header.h */,
+			);
+			path = SimplePcap;
+			sourceTree = "<group>";
+		};
+		8A8152EB248F2CBD00F06C75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A8152EC248F2CBD00F06C75 /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A8152EE248F2CBD00F06C75 /* SimplePcapExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8A490D0424B42C4200D2744C /* IPCConnection.h */,
+				8A490D0324B42C4200D2744C /* IPCConnection.m */,
+				8A8152EF248F2CBD00F06C75 /* FilterPacketProvider.h */,
+				8A8152F0248F2CBD00F06C75 /* FilterPacketProvider.m */,
+				8A8152F2248F2CBD00F06C75 /* main.m */,
+				8A8152F4248F2CBD00F06C75 /* Info.plist */,
+				8A8152F5248F2CBD00F06C75 /* SimplePcapExtension.entitlements */,
+			);
+			path = SimplePcapExtension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8A35BCB7248F258D00FF13BD /* SimplePcap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A35BCC6248F258F00FF13BD /* Build configuration list for PBXNativeTarget "SimplePcap" */;
+			buildPhases = (
+				8A35BCB4248F258D00FF13BD /* Sources */,
+				8A35BCB5248F258D00FF13BD /* Frameworks */,
+				8A35BCB6248F258D00FF13BD /* Resources */,
+				8A8152F9248F2CBD00F06C75 /* Embed System Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A8152F7248F2CBD00F06C75 /* PBXTargetDependency */,
+			);
+			name = SimplePcap;
+			productName = SimplePcap;
+			productReference = 8A35BCB8248F258D00FF13BD /* SimplePcap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8A8152E9248F2CBD00F06C75 /* SimplePcapExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A8152FC248F2CBD00F06C75 /* Build configuration list for PBXNativeTarget "SimplePcapExtension" */;
+			buildPhases = (
+				8A8152E6248F2CBD00F06C75 /* Sources */,
+				8A8152E7248F2CBD00F06C75 /* Frameworks */,
+				8A8152E8248F2CBD00F06C75 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimplePcapExtension;
+			productName = SimplePcapExtension;
+			productReference = 8A8152EA248F2CBD00F06C75 /* Demo.itkSimplePcap.SimplePcapExtension.systemextension */;
+			productType = "com.apple.product-type.system-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A35BCB0248F258D00FF13BD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1400;
+				ORGANIZATIONNAME = Demo;
+				TargetAttributes = {
+					8A35BCB7248F258D00FF13BD = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					8A8152E9248F2CBD00F06C75 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 8A35BCB3248F258D00FF13BD /* Build configuration list for PBXProject "SimplePcap" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8A35BCAF248F258D00FF13BD;
+			productRefGroup = 8A35BCB9248F258D00FF13BD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A35BCB7248F258D00FF13BD /* SimplePcap */,
+				8A8152E9248F2CBD00F06C75 /* SimplePcapExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A35BCB6248F258D00FF13BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A35BCBE248F258F00FF13BD /* Assets.xcassets in Resources */,
+				8AF2F182248F3F3600308B9F /* MainWindowController.xib in Resources */,
+				8A35BCC1248F258F00FF13BD /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A8152E8248F2CBD00F06C75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A35BCB4248F258D00FF13BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF0F29524B4463C00FAB655 /* IPCConnection.m in Sources */,
+				8AF2F181248F3F3600308B9F /* MainWindowController.swift in Sources */,
+				8A35BCBC248F258D00FF13BD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A8152E6248F2CBD00F06C75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A8152F3248F2CBD00F06C75 /* main.m in Sources */,
+				8A8152F1248F2CBD00F06C75 /* FilterPacketProvider.m in Sources */,
+				8A490D0524B42C4200D2744C /* IPCConnection.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A8152F7248F2CBD00F06C75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A8152E9248F2CBD00F06C75 /* SimplePcapExtension */;
+			targetProxy = 8A8152F6248F2CBD00F06C75 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8A35BCBF248F258F00FF13BD /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A35BCC0248F258F00FF13BD /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8A35BCC4248F258F00FF13BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8A35BCC5248F258F00FF13BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		8A35BCC7248F258F00FF13BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimplePcap/SimplePcap.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 6W4MCUSVLR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = SimplePcap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Demo.itkSimplePcap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SimplePcap/SimplePcap-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8A35BCC8248F258F00FF13BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimplePcap/SimplePcap.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 6W4MCUSVLR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = SimplePcap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Demo.itkSimplePcap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SimplePcap/SimplePcap-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8A8152FA248F2CBD00F06C75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SimplePcapExtension/SimplePcapExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 6W4MCUSVLR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = SimplePcapExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = Demo.itkSimplePcap.SimplePcapExtension;
+				PRODUCT_NAME = "$(inherited)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8A8152FB248F2CBD00F06C75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SimplePcapExtension/SimplePcapExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 6W4MCUSVLR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = SimplePcapExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = Demo.itkSimplePcap.SimplePcapExtension;
+				PRODUCT_NAME = "$(inherited)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A35BCB3248F258D00FF13BD /* Build configuration list for PBXProject "SimplePcap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A35BCC4248F258F00FF13BD /* Debug */,
+				8A35BCC5248F258F00FF13BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A35BCC6248F258F00FF13BD /* Build configuration list for PBXNativeTarget "SimplePcap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A35BCC7248F258F00FF13BD /* Debug */,
+				8A35BCC8248F258F00FF13BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A8152FC248F2CBD00F06C75 /* Build configuration list for PBXNativeTarget "SimplePcapExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A8152FA248F2CBD00F06C75 /* Debug */,
+				8A8152FB248F2CBD00F06C75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8A35BCB0248F258D00FF13BD /* Project object */;
+}
