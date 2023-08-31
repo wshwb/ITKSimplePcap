@@ -47,6 +47,7 @@ static IPCConnection *_sharedInstance;
 {
     NSString *machServiceName = [self extensionMachServiceNameFromBundle:[NSBundle mainBundle]];
 
+    NSLog(@"ITK: startListener");
     if (machServiceName != nil)
     {
         NSLog(@"Starting XPC listener for mach service: %@", machServiceName);
@@ -63,7 +64,7 @@ static IPCConnection *_sharedInstance;
         withCompletionHandler:(void (^)(bool success))completionHandler
 {
     self.delegate = delegate;
-
+    NSLog(@"ITK: registerWithExtension");
     if (nil != self.currentConnection)
     {
         NSLog(@"Already registered with the provider");
@@ -147,7 +148,7 @@ shouldAcceptNewConnection:(NSXPCConnection *_Nonnull)newConnection
         reply(false);
         return;
     }
-
+    NSLog(@"ITK: sendPacketToAppWithInterface");
     NSObject<AppCommunication> *appProxy =
         [self.currentConnection remoteObjectProxyWithErrorHandler:^(NSError *_Nonnull error) {
             NSLog(@"Failed to send data to app, err: %@", [error localizedDescription]);
@@ -217,7 +218,7 @@ shouldAcceptNewConnection:(NSXPCConnection *_Nonnull)newConnection
     {
         return;
     }
-
+    NSLog(@"ITK: sendTextMessageToAppWithMessage");
     NSObject<AppCommunication> *appProxy =
         [self.currentConnection remoteObjectProxyWithErrorHandler:^(NSError *_Nonnull error) {
             NSLog(@"Failed to send message to app, err: %@", [error localizedDescription]);

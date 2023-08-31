@@ -8,9 +8,22 @@
 
 #import <NetworkExtension/NetworkExtension.h>
 
+typedef struct _GVSPPacketHeader{
+    
+    uint16_t status;
+    uint16_t block_id;
+    uint8_t Erp;
+    uint8_t packet_id[3];
+}GVSPPacketHeader;
+
+uint32_t lastRcvPktId=0;
+uint32_t lastRcvBlkId=0;
+uint32_t totalRcvpktCount=0;
+uint32_t totalLostPktCount=0;
+
 @interface FilterPacketProvider : NEFilterPacketProvider
 
-+ (void)handlePacketwithContext: (NEFilterPacketContext *_Nonnull) context
++ (bool)handlePacketwithContext: (NEFilterPacketContext *_Nonnull) context
                   fromInterface: (nw_interface_t _Nonnull) interface
                       direction: (NETrafficDirection) direction
                    withRawBytes: (const void *_Nonnull) packetBytes

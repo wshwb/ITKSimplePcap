@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A8152E9248F2CBD00F06C75"
-               BuildableName = "Demo.SimplePcap.SimplePcapExtension.systemextension"
+               BuildableName = "Demo.itkSimplePcap.SimplePcapExtension.systemextension"
                BlueprintName = "SimplePcapExtension"
                ReferencedContainer = "container:SimplePcap.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A8152E9248F2CBD00F06C75"
-            BuildableName = "Demo.SimplePcap.SimplePcapExtension.systemextension"
+            BuildableName = "Demo.itkSimplePcap.SimplePcapExtension.systemextension"
             BlueprintName = "SimplePcapExtension"
             ReferencedContainer = "container:SimplePcap.xcodeproj">
          </BuildableReference>

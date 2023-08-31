@@ -38,7 +38,7 @@ extern size_t pcapSize;
     pcap_hdr_t pcapHeader = {0};
     NSData *databuffer = nil;
     BOOL res = NO;
-
+    NSLog(@"ITK: startFilterWithCompletionHandler");
     pcapHeader.magic_number = 0xa1b2c3d4;
     pcapHeader.version_major = 2;
     pcapHeader.version_minor = 4;
@@ -65,12 +65,15 @@ extern size_t pcapSize;
 
     self.packetHandler = ^NEFilterPacketProviderVerdict(NEFilterPacketContext * _Nonnull context, nw_interface_t  _Nonnull interface, NETrafficDirection direction, const void * _Nonnull packetBytes, const size_t packetLength) {
 
-        (void)[FilterPacketProvider handlePacketwithContext: context
+        bool res = (bool)[FilterPacketProvider handlePacketwithContext: context
                                               fromInterface: interface
                                                   direction: direction
                                                withRawBytes: packetBytes
                                                      length: packetLength];
 
+        if(res){
+            return NEFilterPacketProviderVerdictDrop;
+        }
         return NEFilterPacketProviderVerdictAllow;
     };
 
@@ -79,10 +82,12 @@ extern size_t pcapSize;
 
 - (void)stopFilterWithReason:(NEProviderStopReason)reason completionHandler:(void (^)(void))completionHandler {
     // Add code to clean up filter resources.
+    NSLog(@"ITK: stopFilterWithReason");
     completionHandler();
 }
 
-+ (void)handlePacketwithContext: (NEFilterPacketContext *_Nonnull) context
+
++ (bool)handlePacketwithContext: (NEFilterPacketContext *_Nonnull) context
                   fromInterface: (nw_interface_t _Nonnull) interface
                       direction: (NETrafficDirection) direction
                    withRawBytes: (const void *_Nonnull) packetBytes
@@ -93,58 +98,78 @@ extern size_t pcapSize;
     // Only capture Ether traffic for now
     if ((nw_interface_type_wired != nicType) && (nw_interface_type_wifi != nicType))
     {
-        return;
+        return false;
     }
 
+    //NSLog(@"ITK: handlePacketwithContext");
     // write pcap
-    NSFileHandle *file;
-    NSMutableData *data;
-    struct timeval tv = {0};
+    //NSFileHandle *file;
+    //NSMutableData *data;
+    //struct timeval tv = {0};
 
-    pcaprec_hdr_t pktHeader = {0};
+    //pcaprec_hdr_t pktHeader = {0};
 
-    gettimeofday(&tv, NULL);
+    //gettimeofday(&tv, NULL);
 
-    pktHeader.ts_sec = (uint32_t)tv.tv_sec;
-    pktHeader.ts_usec = tv.tv_usec;
-    pktHeader.incl_len = (uint32_t)packetLength;
-    pktHeader.orig_len = (uint32_t)packetLength;
+//    pktHeader.ts_sec = (uint32_t)tv.tv_sec;
+//    pktHeader.ts_usec = tv.tv_usec;
+//    pktHeader.incl_len = (uint32_t)packetLength;
+//    pktHeader.orig_len = (uint32_t)packetLength;
 
-    data = [NSMutableData dataWithBytes: &pktHeader length: sizeof(pktHeader)];
-    [data appendBytes: packetBytes length: packetLength];
-
-    file = [NSFileHandle fileHandleForUpdatingAtPath: myPcapFileName];
-
-    if (file != nil)
-    {
-        [file seekToEndOfFile];
-
-        [file writeData: data];
-
-        [file closeFile];
+    //data = [NSMutableData dataWithBytes: &pktHeader length: sizeof(pktHeader)];
+    //[data appendBytes: packetBytes length: packetLength];
+    //NSLog(@"ITK: packetlength:%zu",packetLength);
+    if(packetLength<1000){
+        return false;
     }
-    else
-    {
-        NSLog(@"Failed to open file");
-        [[IPCConnection shared] sendTextMessageToAppWithMessage:@"Failed to open file"
-                                          withCompletionHandler:^(bool success) {}];
+    
+    char *ehdr=(char*)packetBytes;
+    GVSPPacketHeader* gvspheader=(GVSPPacketHeader*)(ehdr+14+20+8);
+    uint16_t blkid=ntohs(gvspheader->block_id);
+    uint32_t pktid=(gvspheader->packet_id[0]<<16)+(gvspheader->packet_id[1]<<8)+(gvspheader->packet_id[2]);
+    totalRcvpktCount+=1;
+    if(lastRcvBlkId == blkid){
+        if((pktid-lastRcvPktId)>1){
+            totalLostPktCount+=(pktid-lastRcvPktId-1);
+            NSLog(@"1650WARN! blkid:%d pktid:%d lastRcvPktId:%d lRcvBid:%d lost:%d Rcv:%d Loss:%f.",blkid,pktid,lastRcvPktId,lastRcvBlkId,totalLostPktCount,totalRcvpktCount,(double)((double)totalLostPktCount/(double)totalRcvpktCount));
+        }
     }
-    pcapSize += packetLength + sizeof(pcaprec_hdr_t);
+    lastRcvBlkId=blkid;
+    lastRcvPktId=pktid;
+    return true;
+    //NSLog(@"blkid:%d packetid:%d.",blkid,pktid);
+    //file = [NSFileHandle fileHandleForUpdatingAtPath: myPcapFileName];
+
+//    if (file != nil)
+//    {
+//        [file seekToEndOfFile];
+//
+//        [file writeData: data];
+//
+//        [file closeFile];
+//    }
+//    else
+//    {
+//        NSLog(@"Failed to open file");
+//        [[IPCConnection shared] sendTextMessageToAppWithMessage:@"Failed to open file"
+//                                          withCompletionHandler:^(bool success) {}];
+//    }
+    //pcapSize += packetLength + sizeof(pcaprec_hdr_t);
     // end write pcap
 
-    NSString *interfaceName = [NSString stringWithCString:nw_interface_get_name(interface)
-                                                 encoding:NSUTF8StringEncoding];
+    //NSString *interfaceName = [NSString stringWithCString:nw_interface_get_name(interface)
+     //                                            encoding:NSUTF8StringEncoding];
 
-    [[IPCConnection shared] sendPacketToAppWithInterface:interfaceName
-                                           withTimeStamp:tv.tv_sec
-                                         withPacketBytes:packetBytes
-                                              withLength:packetLength
-                                   withCompletionHandler:^(bool success) {
-                                     if (!success)
-                                     {
-                                         NSLog(@"Unable to send packet to app.");
-                                     }
-                                 }];
+//    [[IPCConnection shared] sendPacketToAppWithInterface:interfaceName
+//                                           withTimeStamp:tv.tv_sec
+//                                         withPacketBytes:packetBytes
+//                                              withLength:packetLength
+//                                   withCompletionHandler:^(bool success) {
+//                                     if (!success)
+//                                     {
+//                                         NSLog(@"Unable to send packet to app.");
+//                                     }
+//                                 }];
 
 }
 

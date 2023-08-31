@@ -12,6 +12,7 @@
 
 int main(int argc, char *argv[])
 {
+    NSLog(@"ITK: main");
     @autoreleasepool {
         [NEProvider startSystemExtensionMode];
         [[IPCConnection shared] startListener];
