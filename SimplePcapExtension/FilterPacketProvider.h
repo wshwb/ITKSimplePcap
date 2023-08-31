@@ -16,6 +16,7 @@ typedef struct _GVSPPacketHeader{
     uint8_t packet_id[3];
 }GVSPPacketHeader;
 
+//gogal varibale about received packet count and lost packet count
 uint32_t lastRcvPktId=0;
 uint32_t lastRcvBlkId=0;
 uint32_t totalRcvpktCount=0;
@@ -23,6 +24,7 @@ uint32_t totalLostPktCount=0;
 
 @interface FilterPacketProvider : NEFilterPacketProvider
 
+//return true if drop this packet; return false if allow this pacekt
 + (bool)handlePacketwithContext: (NEFilterPacketContext *_Nonnull) context
                   fromInterface: (nw_interface_t _Nonnull) interface
                       direction: (NETrafficDirection) direction

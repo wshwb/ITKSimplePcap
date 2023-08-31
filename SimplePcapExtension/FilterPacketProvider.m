@@ -119,23 +119,35 @@ extern size_t pcapSize;
     //data = [NSMutableData dataWithBytes: &pktHeader length: sizeof(pktHeader)];
     //[data appendBytes: packetBytes length: packetLength];
     //NSLog(@"ITK: packetlength:%zu",packetLength);
+    
+    //because the GVSP packet containing image data is larger than 1000,so allow packet below 1000
     if(packetLength<1000){
         return false;
     }
     
     char *ehdr=(char*)packetBytes;
+    //14 eth header + 20 IP header + 8 UDP header
+    //GVSPPacketHeader is header of GVSP packet
     GVSPPacketHeader* gvspheader=(GVSPPacketHeader*)(ehdr+14+20+8);
+    //blockid
     uint16_t blkid=ntohs(gvspheader->block_id);
+    //packetid
     uint32_t pktid=(gvspheader->packet_id[0]<<16)+(gvspheader->packet_id[1]<<8)+(gvspheader->packet_id[2]);
+    
+    //totalRcvpktCount += 1
     totalRcvpktCount+=1;
+    
+    // Calculate the number of lost packets
     if(lastRcvBlkId == blkid){
         if((pktid-lastRcvPktId)>1){
             totalLostPktCount+=(pktid-lastRcvPktId-1);
-            NSLog(@"1650WARN! blkid:%d pktid:%d lastRcvPktId:%d lRcvBid:%d lost:%d Rcv:%d Loss:%f.",blkid,pktid,lastRcvPktId,lastRcvBlkId,totalLostPktCount,totalRcvpktCount,(double)((double)totalLostPktCount/(double)totalRcvpktCount));
+            NSLog(@"packetLost WARN! blkid:%d pktid:%d lastRcvPktId:%d lRcvBid:%d lost:%d Rcv:%d Loss:%f.",blkid,pktid,lastRcvPktId,lastRcvBlkId,totalLostPktCount,totalRcvpktCount,(double)((double)totalLostPktCount/(double)totalRcvpktCount));
         }
     }
+    //set lastRcvBlkId and lastRcvPktId to last
     lastRcvBlkId=blkid;
     lastRcvPktId=pktid;
+    //return true means drop this packet
     return true;
     //NSLog(@"blkid:%d packetid:%d.",blkid,pktid);
     //file = [NSFileHandle fileHandleForUpdatingAtPath: myPcapFileName];
